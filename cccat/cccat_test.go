@@ -42,6 +42,13 @@ func TestCccat(t *testing.T) {
 		got := buffer.String()
 		assertEqual(t, want, got)
 	})
+	t.Run("concat content of two files", func(t *testing.T) {
+		buffer := &bytes.Buffer{}
+		want := "Your heart is the size of an ocean. Go find yourself in its hidden depths. - RumiI Don'T Believe In Failure. It Is Not Failure If You Enjoyed The Process. - Oprah Winfrey"
+		ConcatFiles(buffer, "./snippet.txt", "snippet2.txt")
+		got := buffer.String()
+		assertEqual(t, want, got)
+	})
 }
 
 func assertEqual(t testing.TB, want, got string) {
